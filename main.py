@@ -25,14 +25,14 @@ def get_weather():
   return weather['weather'], math.floor(weather['temp']), math.floor(weather['high']), math.floor(weather['low'])
 
 def get_count():
-  delta = today - datetime.strptime(start_date, "%Y-%m-%d") + 1
-  return delta.days
+  delta = today - datetime.strptime(start_date, "%Y-%m-%d")
+  return delta.days + 1
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
   if next < datetime.now():
-    next = next.replace(year=next.year + 1) - 1
-  return (next - today).days
+    next = next.replace(year=next.year + 1) 
+  return (next - today).days - 1
 
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
